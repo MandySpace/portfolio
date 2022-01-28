@@ -38,20 +38,6 @@ export const fade = {
   },
 };
 
-export const fadeSlow = {
-  hidden: {
-    opacity: 0,
-  },
-  show: {
-    opacity: 1,
-    transition: {
-      delay: 0.75,
-      duration: 1.5,
-      ease: "easeOut",
-    },
-  },
-};
-
 export const photoAnim = {
   hidden: {
     scale: 1.2,
@@ -95,4 +81,34 @@ export const slide = {
 export const sliderContainer = {
   hidden: { opacity: 1 },
   show: { opacity: 1, transition: { staggerChildren: 0.1, ease: "easeOut" } },
+};
+
+export const verticalAnim = {
+  hidden: {
+    y: 100,
+    rotate: "-90deg",
+  },
+  show: {
+    y: -200,
+    rotate: "-90deg",
+    transition: {
+      duration: 0.7,
+      ease: "easeOut",
+    },
+  },
+};
+
+export const swipeAnim = {
+  hidden: {
+    x: 0,
+    opacity: 0,
+  },
+  show: {
+    x: [0, -100, -100, 0, -100, -100, 0],
+    opacity: [0, 1, 0, 0, 1, 0, 0],
+    transition: {
+      duration: 4,
+      delay: 8,
+    },
+  },
 };

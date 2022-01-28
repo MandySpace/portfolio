@@ -1,7 +1,10 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { useLocation } from "react-router-dom";
 
 function Nav() {
+  const { pathname } = useLocation();
   return (
     <StyledNav>
       <div className="nav-container">
@@ -13,17 +16,26 @@ function Nav() {
         <ul>
           <li>
             <Link to="/">
-              <span>01.</span> About Us
+              <span>01.</span> About
+              <motion.div
+                className={`line ${pathname === "/" ? "active" : ""}`}
+              />
             </Link>
           </li>
           <li>
             <Link to="/work">
-              <span>02.</span> Our Work
+              <span>02.</span> Projects
+              <motion.div
+                className={`line ${pathname === "/work" ? "active" : ""}`}
+              />
             </Link>
           </li>
           <li>
             <Link to="/contact">
-              <span>03.</span> Contact Us
+              <span>03.</span> Contact
+              <motion.div
+                className={`line ${pathname === "/contact" ? "active" : ""}`}
+              />
             </Link>
           </li>
         </ul>
@@ -50,6 +62,18 @@ const StyledNav = styled.nav`
     width: 100vw;
     top: 0;
     z-index: 100;
+  }
+
+  .line {
+    height: 3px;
+    width: 0%;
+    background: #23d997;
+    margin-top: 5px;
+    transition: all 0.5s ease-out;
+  }
+
+  .active {
+    width: 100%;
   }
 
   span {

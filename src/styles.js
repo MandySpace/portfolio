@@ -2,12 +2,29 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 export const About = styled(motion.div)`
+  position: relative;
   min-height: 100vh;
+  max-width: 100rem;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 5rem 10rem;
   color: white;
+
+  .swipe {
+    position: absolute;
+    left: 50%;
+    top: 80%;
+    transform: translateX(-50%);
+
+    user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+  }
 `;
 
 export const Description = styled.div`

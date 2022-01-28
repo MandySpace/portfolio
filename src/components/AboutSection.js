@@ -1,13 +1,14 @@
 import { About, Description, Hide, SubHeading, Serif } from "../styles";
 import { motion } from "framer-motion";
-import { titleAnim, fade } from "../animation";
-import { useHistory } from "react-router-dom";
+import { titleAnim, fade, swipeAnim } from "../animation";
+import { useHistory, Link } from "react-router-dom";
+import VerticalText from "../components/VerticalText";
+import swipe from "../img/svg/swipe.svg";
 
 function AboutSection() {
   const history = useHistory();
 
   const panHandler = (_, i) => {
-    console.log(i.offset.x);
     if (i.offset.x < -100) {
       history.push("/work");
     }
@@ -45,9 +46,17 @@ function AboutSection() {
           experiences and products. I'm a firm believer in prioritising user
           experience, accessibility and responsive design.
         </SubHeading>
-        <motion.button variants={fade}>Check out my projects</motion.button>
+        <Link to="/work">
+          <motion.button variants={fade}>Check out my projects</motion.button>
+        </Link>
       </Description>
-      {/* <Wave /> */}
+      <VerticalText />
+      <motion.img
+        variants={swipeAnim}
+        src={swipe}
+        alt="finger swiping left"
+        className="swipe"
+      />
     </About>
   );
 }

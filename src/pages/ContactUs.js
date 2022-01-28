@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { fadeSlow, pageAnimation, titleAnim } from "../animation";
+import { fade, pageAnimation, titleAnim } from "../animation";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import mail from "../img/svg/mail.svg";
@@ -78,7 +78,7 @@ function ContactUs({ name, email, message, setName, setEmail, setMessage }) {
       dragElastic={0.8}
       dragTransition={{ bounceStiffness: 10, bounceDamping: 5 }}
       onPan={panHandler}
-      variants={pageAnimation(0.3, 0.2, 0.2)}
+      variants={pageAnimation(0.3, 0.2, 0.25)}
       initial="hidden"
       animate="show"
       exit="exit"
@@ -92,9 +92,9 @@ function ContactUs({ name, email, message, setName, setEmail, setMessage }) {
           </Hide>
         </Title>
 
-        <motion.div variants={fadeSlow} className="forms-container">
+        <div className="forms-container">
           <div className="contact-info">
-            <div className="link-container">
+            <motion.div variants={fade} className="link-container">
               <img src={mail} alt="envelope" className="svg" />
               <a
                 target="_blank"
@@ -113,9 +113,9 @@ function ContactUs({ name, email, message, setName, setEmail, setMessage }) {
                   Click to copy
                 </span>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="link-container">
+            <motion.div variants={fade} className="link-container">
               <img src={github} alt="" className="svg" />
               <a
                 target="_blank"
@@ -124,9 +124,9 @@ function ContactUs({ name, email, message, setName, setEmail, setMessage }) {
               >
                 github.com/MandySpace
               </a>
-            </div>
+            </motion.div>
 
-            <div className="link-container">
+            <motion.div variants={fade} className="link-container">
               <img src={linkedin} alt="" className="svg" />
               <a
                 target="_blank"
@@ -135,11 +135,11 @@ function ContactUs({ name, email, message, setName, setEmail, setMessage }) {
               >
                 linkedin.com/in/amandeep-singh-368b14227/
               </a>
-            </div>
+            </motion.div>
           </div>
 
           <form autoComplete="off" onSubmit={onSubmitHandler}>
-            <div className="name flex-col input-cont">
+            <motion.div variants={fade} className="name flex-col input-cont">
               <input
                 type="text"
                 id="name"
@@ -154,9 +154,9 @@ function ContactUs({ name, email, message, setName, setEmail, setMessage }) {
               <label htmlFor="name" className="label">
                 <span className="content">Name</span>
               </label>
-            </div>
+            </motion.div>
 
-            <div className="email flex-col input-cont">
+            <motion.div variants={fade} className="email flex-col input-cont">
               <input
                 type="email"
                 id="email"
@@ -169,9 +169,9 @@ function ContactUs({ name, email, message, setName, setEmail, setMessage }) {
               <label htmlFor="email" className="label">
                 <span className="content">Email</span>
               </label>
-            </div>
+            </motion.div>
 
-            <div className="flex-col input-cont message">
+            <motion.div variants={fade} className="flex-col input-cont message">
               <textarea
                 type="text"
                 id="message"
@@ -185,16 +185,16 @@ function ContactUs({ name, email, message, setName, setEmail, setMessage }) {
               <label htmlFor="message" className="label label-message">
                 <span className="content content-message">Message</span>
               </label>
-            </div>
+            </motion.div>
 
-            <div className="btn-container">
+            <motion.div variants={fade} className="btn-container">
               <span ref={formNotifRef} className="submit-status">
                 Form submitted successfully
               </span>
               <button className="form-btn">Submit</button>
-            </div>
+            </motion.div>
           </form>
-        </motion.div>
+        </div>
       </div>
     </ContactStyle>
   );

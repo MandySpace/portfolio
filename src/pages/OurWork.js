@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import athlete from "../img/athlete-small.png";
+import a from "../img/a.png";
+import muse from "../img/muse.png";
 import { motion } from "framer-motion";
 import {
   pageAnimation,
@@ -12,10 +14,20 @@ import {
 import { useScroll } from "../components/useScroll";
 import ScrollTop from "../components/ScrollTop";
 import { useHistory } from "react-router-dom";
+import useSlider from "../components/useSlider";
+import { useRef } from "react";
 
 function OurWork() {
   const [element, controls] = useScroll();
   const [element2, controls2] = useScroll();
+
+  const ref1 = useRef(null);
+  const ref2 = useRef(null);
+  const ref3 = useRef(null);
+
+  const [slider1Ref] = useSlider(ref1);
+  const [slider2Ref] = useSlider(ref2);
+  const [slider3Ref] = useSlider(ref3);
 
   const history = useHistory();
 
@@ -51,19 +63,28 @@ function OurWork() {
         <Movie>
           <div className="section-container">
             <motion.h2 variants={fade}>
-              <span>01.</span> Score
+              <span>01.</span> Muse
             </motion.h2>
             <motion.div variants={lineAnim} className="line"></motion.div>
             <div className="info-container">
-              <div className="img-container">
-                <motion.img variants={photoAnim} src={athlete} alt="athlete" />
+              <div className="slider" ref={slider1Ref}>
+                <div className="img-container" ref={ref1}>
+                  <motion.img variants={photoAnim} src={muse} alt="athlete" />
+                  <motion.img
+                    variants={photoAnim}
+                    src={athlete}
+                    alt="athlete"
+                  />
+                  <motion.img variants={photoAnim} src={a} alt="athlete" />
+                </div>
               </div>
               <motion.div variants={fade} className="about-project">
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Nostrum pariatur odit laudantium exercitationem quae sint
-                  impedit voluptate ratione laboriosam. Odit quam alias
-                  voluptatibus reiciendis dolorem neque enim beatae fugit esse.
+                  A web app for streaming Spotify music, visualizing and
+                  managing your playlists. You can search for your favourite
+                  tunes or access your favourite music from your playlists. This
+                  app uses Implicit Grant flow to request and get an access
+                  token.
                 </p>
                 <div className="button-container">
                   <button>View Project</button>
@@ -84,8 +105,16 @@ function OurWork() {
             <h2>The Racer</h2>
             <motion.div variants={lineAnim} className="line"></motion.div>
             <motion.div variants={fade} className="info-container">
-              <div className="img-container">
-                <motion.img variants={photoAnim} src={athlete} alt="athlete" />
+              <div className="slider" ref={slider2Ref}>
+                <div className="img-container" ref={ref2}>
+                  <motion.img variants={photoAnim} src={muse} alt="athlete" />
+                  <motion.img
+                    variants={photoAnim}
+                    src={athlete}
+                    alt="athlete"
+                  />
+                  <motion.img variants={photoAnim} src={a} alt="athlete" />
+                </div>
               </div>
               <div className="about-project">
                 <p>
@@ -113,8 +142,16 @@ function OurWork() {
             <h2>Good Times</h2>
             <motion.div variants={lineAnim} className="line"></motion.div>
             <motion.div variants={fade} className="info-container">
-              <div className="img-container">
-                <motion.img variants={photoAnim} src={athlete} alt="athlete" />
+              <div className="slider" ref={slider3Ref}>
+                <div className="img-container" ref={ref3}>
+                  <motion.img variants={photoAnim} src={muse} alt="athlete" />
+                  <motion.img
+                    variants={photoAnim}
+                    src={athlete}
+                    alt="athlete"
+                  />
+                  <motion.img variants={photoAnim} src={a} alt="athlete" />
+                </div>
               </div>
               <div className="about-project">
                 <p>
@@ -181,10 +218,17 @@ const Movie = styled(motion.section)`
     margin-bottom: 3rem;
   }
 
-  .img-container {
+  .slider {
     flex: 2;
-    /* height: 50vh; */
     overflow: hidden;
+    aspect-ratio: 16/9;
+  }
+
+  .img-container {
+    display: flex;
+    /* margin-left: -100%; */
+    width: 100%;
+    transition: all 1s ease-in-out;
   }
 
   .about-project {
@@ -198,7 +242,6 @@ const Movie = styled(motion.section)`
 
   img {
     width: 100%;
-    /* height: 70vh; */
     object-fit: cover;
     object-position: center;
 

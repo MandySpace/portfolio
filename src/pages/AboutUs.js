@@ -6,12 +6,13 @@ import ScrollTop from "../components/ScrollTop";
 function AboutUs() {
   return (
     <motion.div
-      variants={pageAnimation(0.3, 0.2, 0.5)}
+      variants={pageAnimation(0.3, 0.2, 0.4)}
       initial="hidden"
       animate="show"
       exit="exit"
     >
       <AboutSection />
+
       <ScrollTop />
     </motion.div>
   );
