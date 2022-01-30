@@ -1,26 +1,13 @@
-import { useInView } from "react-intersection-observer";
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 
 function useSlider(ref) {
-  const [element, view] = useInView();
-
-  const startInt = useRef();
+  const [slide, setSlide] = useState(0);
 
   useEffect(() => {
-    if (view) {
-      let i = 0;
+    ref.current.style.transform = `translateX(-${slide * 100}%)`;
+  }, [ref, slide]);
 
-      startInt.current = setInterval(() => {
-        i = i > 2 ? 0 : i;
-        ref.current.style.marginLeft = `-${i * 100}%`;
-        i++;
-      }, 5000);
-    } else {
-      clearInterval(startInt.current);
-    }
-  }, [view, ref]);
-
-  return [element];
+  return [slide, setSlide];
 }
 
 export default useSlider;

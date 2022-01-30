@@ -12,6 +12,10 @@ export const About = styled(motion.div)`
   padding: 5rem 10rem;
   color: white;
 
+  @media screen and (max-width: 37.5em) {
+    padding: 5rem 5rem;
+  }
+
   .swipe {
     position: absolute;
     left: 50%;
@@ -24,6 +28,15 @@ export const About = styled(motion.div)`
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
+
+    @media screen and (max-width: 93.75rem) {
+      top: 75%;
+      transform: translateX(-50%) scale(0.8);
+    }
+
+    @media screen and (max-width: 25rem) {
+      transform: translateX(-50%) scale(0.6);
+    }
   }
 `;
 

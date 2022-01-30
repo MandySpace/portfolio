@@ -93,51 +93,6 @@ function ContactUs({ name, email, message, setName, setEmail, setMessage }) {
         </Title>
 
         <div className="forms-container">
-          <div className="contact-info">
-            <motion.div variants={fade} className="link-container">
-              <img src={mail} alt="envelope" className="svg" />
-              <a
-                target="_blank"
-                rel="noreferrer"
-                href="mailto:amandeepsingh.dev99@gmail.com"
-              >
-                amandeepsingh.dev99@gmail.com
-              </a>
-              <div
-                className="copy"
-                onClick={() => copyToClipboard("amandeepsingh.dev99@gmail.com")}
-                onMouseLeave={onMouseLeave}
-              >
-                <img src={copy_white} alt="copy to clipboard" />
-                <span ref={copyToClipRef} className="copy-text">
-                  Click to copy
-                </span>
-              </div>
-            </motion.div>
-
-            <motion.div variants={fade} className="link-container">
-              <img src={github} alt="" className="svg" />
-              <a
-                target="_blank"
-                rel="noreferrer"
-                href="https://github.com/MandySpace"
-              >
-                github.com/MandySpace
-              </a>
-            </motion.div>
-
-            <motion.div variants={fade} className="link-container">
-              <img src={linkedin} alt="" className="svg" />
-              <a
-                target="_blank"
-                rel="noreferrer"
-                href="https://www.linkedin.com/in/amandeep-singh-368b14227/"
-              >
-                linkedin.com/in/amandeep-singh-368b14227/
-              </a>
-            </motion.div>
-          </div>
-
           <form autoComplete="off" onSubmit={onSubmitHandler}>
             <motion.div variants={fade} className="name flex-col input-cont">
               <input
@@ -194,6 +149,50 @@ function ContactUs({ name, email, message, setName, setEmail, setMessage }) {
               <button className="form-btn">Submit</button>
             </motion.div>
           </form>
+          <div className="contact-info">
+            <motion.div variants={fade} className="link-container">
+              <img src={mail} alt="envelope" className="svg" />
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="mailto:amandeepsingh.dev99@gmail.com"
+              >
+                amandeepsingh.dev99@gmail.com
+              </a>
+              <div
+                className="copy"
+                onClick={() => copyToClipboard("amandeepsingh.dev99@gmail.com")}
+                onMouseLeave={onMouseLeave}
+              >
+                <img src={copy_white} alt="copy to clipboard" />
+                <span ref={copyToClipRef} className="copy-text">
+                  Click to copy
+                </span>
+              </div>
+            </motion.div>
+
+            <motion.div variants={fade} className="link-container">
+              <img src={github} alt="" className="svg" />
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://github.com/MandySpace"
+              >
+                github.com/MandySpace
+              </a>
+            </motion.div>
+
+            <motion.div variants={fade} className="link-container">
+              <img src={linkedin} alt="" className="svg" />
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.linkedin.com/in/amandeep-singh-368b14227/"
+              >
+                linkedin.com/in/amandeep-singh-368b14227/
+              </a>
+            </motion.div>
+          </div>
         </div>
       </div>
     </ContactStyle>
@@ -210,6 +209,11 @@ const ContactStyle = styled(motion.div)`
     max-width: 120rem;
     padding: 10rem;
     margin: 0 auto;
+    /* overflow: scroll; */
+
+    @media screen and (max-width: 37.5em) {
+      padding: 5rem 5rem;
+    }
 
     h2 span {
       color: #23d997;
@@ -226,6 +230,16 @@ const ContactStyle = styled(motion.div)`
     .forms-container {
       display: flex;
       gap: 20rem;
+      /* overflow-y: scroll; */
+
+      @media screen and (max-width: 50em) {
+        gap: 10rem;
+      }
+
+      @media screen and (max-width: 43.75em) {
+        flex-direction: column;
+        gap: 7rem;
+      }
     }
 
     .contact-info:first-child {
@@ -237,6 +251,12 @@ const ContactStyle = styled(motion.div)`
       align-items: center;
       gap: 1rem;
       margin-bottom: 5.8rem;
+      margin-top: 2rem;
+
+      @media screen and (max-width: 43.75em) {
+        margin-bottom: 2rem;
+        margin-top: 0rem;
+      }
 
       a {
         text-decoration: none;
@@ -246,6 +266,12 @@ const ContactStyle = styled(motion.div)`
 
         &:hover {
           color: #23d997;
+        }
+      }
+
+      .svg {
+        @media screen and (max-width: 75em) {
+          transform: scale(0.8);
         }
       }
 
@@ -263,6 +289,15 @@ const ContactStyle = styled(motion.div)`
             transform-origin: center;
             transform: scale(1.07);
           }
+
+          @media screen and (max-width: 75em) {
+            transform: scale(0.8);
+
+            &:hover {
+              transform-origin: center;
+              transform: scale(0.87);
+            }
+          }
         }
 
         .copy-text {
@@ -276,6 +311,10 @@ const ContactStyle = styled(motion.div)`
           font-family: "Inconsolata", monospace;
           color: #23d997;
           transition: all 0.3s ease;
+
+          @media screen and (max-width: 75em) {
+            top: -30%;
+          }
         }
 
         &:hover .copy-text {
@@ -287,9 +326,13 @@ const ContactStyle = styled(motion.div)`
     .input-cont {
       position: relative;
       width: 25rem;
-      height: 80px;
+      height: 5rem;
       margin-bottom: 3rem;
       overflow: hidden;
+
+      @media screen and (max-width: 43.75em) {
+        width: 100%;
+      }
     }
 
     .email {
@@ -297,7 +340,7 @@ const ContactStyle = styled(motion.div)`
     }
 
     .message {
-      height: 120px;
+      height: 7.5rem;
     }
 
     .input-name,
@@ -305,7 +348,7 @@ const ContactStyle = styled(motion.div)`
     .input-message {
       width: 100%;
       height: 100%;
-      padding-top: 48px;
+      padding-top: 3rem;
 
       font-size: 1.3rem;
       color: #fff;
@@ -340,7 +383,7 @@ const ContactStyle = styled(motion.div)`
       resize: none;
       margin-top: 2rem;
       font-family: inherit;
-      padding-top: 59px;
+      padding-top: 3.6875rem;
     }
 
     .label {
@@ -392,6 +435,12 @@ const ContactStyle = styled(motion.div)`
       display: flex;
       justify-content: space-between;
       align-items: center;
+
+      @media screen and (max-width: 43.75em) {
+        flex-direction: column;
+        gap: 1rem;
+        padding-top: 0rem;
+      }
     }
 
     .submit-status {

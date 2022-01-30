@@ -1,7 +1,7 @@
 import { About, Description, Hide, SubHeading, Serif } from "../styles";
 import { motion } from "framer-motion";
 import { titleAnim, fade, swipeAnim } from "../animation";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import VerticalText from "../components/VerticalText";
 import swipe from "../img/svg/swipe.svg";
 
@@ -42,21 +42,23 @@ function AboutSection() {
           </Hide>
         </motion.div>
         <SubHeading variants={fade}>
-          I use <span>JavaScript</span> and React to create high-end interactive
-          experiences and products. I'm a firm believer in prioritising user
-          experience, accessibility and responsive design.
+          I use <span>JavaScript</span> and <span>React</span> to create
+          high-end interactive experiences and products. I'm a firm believer in
+          prioritising user experience, accessibility and responsive design.
         </SubHeading>
-        <Link to="/work">
-          <motion.button variants={fade}>Check out my projects</motion.button>
-        </Link>
+
+        <motion.button variants={fade} onClick={() => history.push("/work")}>
+          Check out my projects
+        </motion.button>
       </Description>
       <VerticalText />
-      <motion.img
-        variants={swipeAnim}
-        src={swipe}
-        alt="finger swiping left"
-        className="swipe"
-      />
+      <div className="swipe">
+        <motion.img
+          variants={swipeAnim}
+          src={swipe}
+          alt="finger swiping left"
+        />
+      </div>
     </About>
   );
 }

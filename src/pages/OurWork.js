@@ -16,6 +16,8 @@ import ScrollTop from "../components/ScrollTop";
 import { useHistory } from "react-router-dom";
 import useSlider from "../components/useSlider";
 import { useRef } from "react";
+import left from "../img/svg/arr-left.svg";
+import right from "../img/svg/arr-right.svg";
 
 function OurWork() {
   const [element, controls] = useScroll();
@@ -25,9 +27,9 @@ function OurWork() {
   const ref2 = useRef(null);
   const ref3 = useRef(null);
 
-  const [slider1Ref] = useSlider(ref1);
-  const [slider2Ref] = useSlider(ref2);
-  const [slider3Ref] = useSlider(ref3);
+  const [slide1, setSlide1] = useSlider(ref1);
+  const [slide2, setSlide2] = useSlider(ref2);
+  const [slide3, setSlide3] = useSlider(ref3);
 
   const history = useHistory();
 
@@ -38,6 +40,20 @@ function OurWork() {
     if (i.offset.x > 100) {
       history.push("/");
     }
+  };
+
+  const dotHandler = (setSlide) => {
+    return (e) => {
+      if (e.target.classList.contains("dot")) setSlide(+e.target.dataset.slide);
+    };
+  };
+
+  const arrowHandler = (setSlide, slide, direction) => {
+    return () => {
+      if (slide + direction > 2) setSlide(0);
+      else if (slide + direction < 0) setSlide(2);
+      else setSlide(slide + direction);
+    };
   };
 
   return (
@@ -67,16 +83,49 @@ function OurWork() {
             </motion.h2>
             <motion.div variants={lineAnim} className="line"></motion.div>
             <div className="info-container">
-              <div className="slider" ref={slider1Ref}>
-                <div className="img-container" ref={ref1}>
-                  <motion.img variants={photoAnim} src={muse} alt="athlete" />
-                  <motion.img
-                    variants={photoAnim}
-                    src={athlete}
-                    alt="athlete"
-                  />
-                  <motion.img variants={photoAnim} src={a} alt="athlete" />
+              <div className="carousel">
+                <div className="slider">
+                  <div className="img-container" ref={ref1}>
+                    <motion.img variants={photoAnim} src={muse} alt="athlete" />
+                    <motion.img
+                      variants={photoAnim}
+                      src={athlete}
+                      alt="athlete"
+                    />
+                    <motion.img variants={photoAnim} src={a} alt="athlete" />
+                  </div>
                 </div>
+                <motion.div variants={fade} className="img-navigation">
+                  <div
+                    className="left-arr"
+                    onClick={arrowHandler(setSlide1, slide1, -1)}
+                  >
+                    <img src={left} alt="arrow-left" />
+                  </div>
+                  <div
+                    className="dots-container"
+                    onClick={dotHandler(setSlide1)}
+                  >
+                    <div
+                      className={`dot ${slide1 === 0 ? "dot-active" : ""}`}
+                      data-slide={0}
+                    ></div>
+                    <div
+                      className={`dot ${slide1 === 1 ? "dot-active" : ""}`}
+                      data-slide={1}
+                    ></div>
+                    <div
+                      className={`dot ${slide1 === 2 ? "dot-active" : ""}`}
+                      data-slide={2}
+                    ></div>
+                  </div>
+                  <div
+                    className="right-arr"
+                    onClick={arrowHandler(setSlide1, slide1, 1)}
+                  >
+                    <img src={right} alt="arrow-right" />
+                  </div>
+                </motion.div>
               </div>
               <motion.div variants={fade} className="about-project">
                 <p>
@@ -87,8 +136,8 @@ function OurWork() {
                   token.
                 </p>
                 <div className="button-container">
-                  <button>View Project</button>
-                  <button>View Code</button>
+                  <button className="work-btn">View Project</button>
+                  <button className="work-btn">View Code</button>
                 </div>
               </motion.div>
             </div>
@@ -105,15 +154,48 @@ function OurWork() {
             <h2>The Racer</h2>
             <motion.div variants={lineAnim} className="line"></motion.div>
             <motion.div variants={fade} className="info-container">
-              <div className="slider" ref={slider2Ref}>
-                <div className="img-container" ref={ref2}>
-                  <motion.img variants={photoAnim} src={muse} alt="athlete" />
-                  <motion.img
-                    variants={photoAnim}
-                    src={athlete}
-                    alt="athlete"
-                  />
-                  <motion.img variants={photoAnim} src={a} alt="athlete" />
+              <div className="carousel">
+                <div className="slider">
+                  <div className="img-container" ref={ref2}>
+                    <motion.img variants={photoAnim} src={muse} alt="athlete" />
+                    <motion.img
+                      variants={photoAnim}
+                      src={athlete}
+                      alt="athlete"
+                    />
+                    <motion.img variants={photoAnim} src={a} alt="athlete" />
+                  </div>
+                </div>
+                <div className="img-navigation">
+                  <div
+                    className="left-arr"
+                    onClick={arrowHandler(setSlide2, slide2, -1)}
+                  >
+                    <img src={left} alt="arrow-left" />
+                  </div>
+                  <div
+                    className="dots-container"
+                    onClick={dotHandler(setSlide2)}
+                  >
+                    <div
+                      className={`dot ${slide2 === 0 ? "dot-active" : ""}`}
+                      data-slide={0}
+                    ></div>
+                    <div
+                      className={`dot ${slide2 === 1 ? "dot-active" : ""}`}
+                      data-slide={1}
+                    ></div>
+                    <div
+                      className={`dot ${slide2 === 2 ? "dot-active" : ""}`}
+                      data-slide={2}
+                    ></div>
+                  </div>
+                  <div
+                    className="right-arr"
+                    onClick={arrowHandler(setSlide2, slide2, 1)}
+                  >
+                    <img src={right} alt="arrow-right" />
+                  </div>
                 </div>
               </div>
               <div className="about-project">
@@ -124,8 +206,8 @@ function OurWork() {
                   voluptatibus reiciendis dolorem neque enim beatae fugit esse.
                 </p>
                 <div className="button-container">
-                  <button>View Project</button>
-                  <button>View Source Code</button>
+                  <button className="work-btn">View Project</button>
+                  <button className="work-btn">View Source Code</button>
                 </div>
               </div>
             </motion.div>
@@ -142,15 +224,48 @@ function OurWork() {
             <h2>Good Times</h2>
             <motion.div variants={lineAnim} className="line"></motion.div>
             <motion.div variants={fade} className="info-container">
-              <div className="slider" ref={slider3Ref}>
-                <div className="img-container" ref={ref3}>
-                  <motion.img variants={photoAnim} src={muse} alt="athlete" />
-                  <motion.img
-                    variants={photoAnim}
-                    src={athlete}
-                    alt="athlete"
-                  />
-                  <motion.img variants={photoAnim} src={a} alt="athlete" />
+              <div className="carousel">
+                <div className="slider">
+                  <div className="img-container" ref={ref3}>
+                    <motion.img variants={photoAnim} src={muse} alt="athlete" />
+                    <motion.img
+                      variants={photoAnim}
+                      src={athlete}
+                      alt="athlete"
+                    />
+                    <motion.img variants={photoAnim} src={a} alt="athlete" />
+                  </div>
+                </div>
+                <div className="img-navigation">
+                  <div
+                    className="left-arr"
+                    onClick={arrowHandler(setSlide3, slide3, -1)}
+                  >
+                    <img src={left} alt="arrow-left" />
+                  </div>
+                  <div
+                    className="dots-container"
+                    onClick={dotHandler(setSlide3)}
+                  >
+                    <div
+                      className={`dot ${slide3 === 0 ? "dot-active" : ""}`}
+                      data-slide={0}
+                    ></div>
+                    <div
+                      className={`dot ${slide3 === 1 ? "dot-active" : ""}`}
+                      data-slide={1}
+                    ></div>
+                    <div
+                      className={`dot ${slide3 === 2 ? "dot-active" : ""}`}
+                      data-slide={2}
+                    ></div>
+                  </div>
+                  <div
+                    className="right-arr"
+                    onClick={arrowHandler(setSlide3, slide3, 1)}
+                  >
+                    <img src={right} alt="arrow-right" />
+                  </div>
                 </div>
               </div>
               <div className="about-project">
@@ -161,8 +276,8 @@ function OurWork() {
                   voluptatibus reiciendis dolorem neque enim beatae fugit esse.
                 </p>
                 <div className="button-container">
-                  <button>View Project</button>
-                  <button>View Source Code</button>
+                  <button className="work-btn">View Project</button>
+                  <button className="work-btn">View Source Code</button>
                 </div>
               </div>
             </motion.div>
@@ -201,6 +316,10 @@ const Movie = styled(motion.section)`
   display: flex;
   align-items: center;
 
+  @media screen and (max-width: 37.5em) {
+    padding: 10rem 5rem;
+  }
+
   .section-container {
     max-width: 100rem;
     margin: 0 auto;
@@ -210,6 +329,10 @@ const Movie = styled(motion.section)`
     display: flex;
     gap: 3rem;
     align-items: center;
+
+    @media screen and (max-width: 62.5em) {
+      flex-direction: column;
+    }
   }
 
   .line {
@@ -219,25 +342,105 @@ const Movie = styled(motion.section)`
   }
 
   .slider {
-    flex: 2;
     overflow: hidden;
     aspect-ratio: 16/9;
+    width: 100%;
+  }
+
+  .carousel {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .img-container {
     display: flex;
-    /* margin-left: -100%; */
+    will-change: transform;
     width: 100%;
     transition: all 1s ease-in-out;
   }
 
+  .img-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    width: 70%;
+
+    @media screen and (max-width: 62.5em) {
+      width: 80%;
+    }
+  }
+
+  .left-arr,
+  .right-arr {
+    padding: 0.3rem;
+    border-radius: 50%;
+    transition: all 0.3s;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #75757573;
+
+    &:active {
+      background: #5a5a5a73;
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        background: #9c9c9c70;
+      }
+    }
+
+    @media screen and (max-width: 37.5em) {
+      padding: 0.2rem;
+      transform: scale(0.8);
+    }
+  }
+
+  .dots-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .dot {
+    width: 0.7rem;
+    aspect-ratio: 1;
+    background: #535353;
+    border-radius: 50%;
+    box-sizing: content-box;
+    border: 0.5rem solid #1d1d1d;
+  }
+
+  .dot-active {
+    background: #23d997;
+  }
+
   .about-project {
     flex: 1;
+
+    p {
+      width: 100%;
+      max-width: 70ch;
+    }
   }
 
   .button-container {
     display: flex;
     gap: 3rem;
+
+    @media screen and (max-width: 62.5em) {
+      justify-content: center;
+    }
+
+    .work-btn {
+      width: 12rem;
+    }
   }
 
   img {
