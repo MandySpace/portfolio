@@ -9,11 +9,11 @@ export const About = styled(motion.div)`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 5rem 10rem;
+  padding: 12rem 10rem;
   color: white;
 
   @media screen and (max-width: 37.5em) {
-    padding: 5rem 5rem;
+    padding: 12rem 3rem;
   }
 
   .swipe {

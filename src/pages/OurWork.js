@@ -16,12 +16,12 @@ import { useEffect, useRef, useState } from "react";
 import left from "../img/svg/arr-left.svg";
 import right from "../img/svg/arr-right.svg";
 
-// import score1 from "../img/score/score1.png";
+import score1 from "../img/score/score1.png";
 import score1_low from "../img/score/score1-low.png";
 // import score1_mobile from "../img/score/score1-mobile.png";
-// import score2 from "../img/score/score2.jpg";
+import score2 from "../img/score/score2.jpg";
 import score2_low from "../img/score/score2-low.jpg";
-// import score3 from "../img/score/score3.png";
+import score3 from "../img/score/score3.png";
 import score3_low from "../img/score/score3-low.png";
 // import score3_mobile from "../img/score/score3-mobile.png";
 
@@ -34,12 +34,12 @@ import muse3 from "../img/muse/muse3.png";
 import muse3_low from "../img/muse/muse3-low.png";
 // import muse3_mobile from "../img/muse/muse3-mobile.png";
 
-// import astra1 from "../img/astra/astra1.png";
+import astra1 from "../img/astra/astra1.png";
 import astra1_low from "../img/astra/astra1-low.png";
 // import astra1_mobile from "../img/astra/astra1-mobile.png";
-// import astra2 from "../img/astra/astra2.jpg";
+import astra2 from "../img/astra/astra2.jpg";
 import astra2_low from "../img/astra/astra2-low.jpg";
-// import astra3 from "../img/astra/astra3.png";
+import astra3 from "../img/astra/astra3.png";
 import astra3_low from "../img/astra/astra3-low.png";
 // import astra3_mobile from "../img/astra/astra3-mobile.png";
 
@@ -51,8 +51,8 @@ function imgPromise(ref, newSrc) {
 }
 
 function OurWork() {
-  const [element, controls] = useScroll();
-  const [element2, controls2] = useScroll();
+  const [element, controls, view] = useScroll();
+  const [element2, controls2, view2] = useScroll();
 
   const ref1 = useRef(null);
   const ref2 = useRef(null);
@@ -62,11 +62,21 @@ function OurWork() {
   const muse2Ref = useRef(null);
   const muse3Ref = useRef(null);
 
+  const score1Ref = useRef(null);
+  const score2Ref = useRef(null);
+  const score3Ref = useRef(null);
+
+  const astra1Ref = useRef(null);
+  const astra2Ref = useRef(null);
+  const astra3Ref = useRef(null);
+
   const [slide1, setSlide1] = useSlider(ref1);
   const [slide2, setSlide2] = useSlider(ref2);
   const [slide3, setSlide3] = useSlider(ref3);
 
   const [didImageLoad, setdidImageLoad] = useState(false);
+  const [didImageLoad2, setdidImageLoad2] = useState(false);
+  const [didImageLoad3, setdidImageLoad3] = useState(false);
 
   const history = useHistory();
 
@@ -100,6 +110,26 @@ function OurWork() {
       imgPromise(muse3Ref, muse3),
     ]).then(() => setdidImageLoad(true));
   }, []);
+
+  useEffect(() => {
+    if (!didImageLoad2 && view) {
+      Promise.allSettled([
+        imgPromise(score1Ref, score1),
+        imgPromise(score2Ref, score2),
+        imgPromise(score3Ref, score3),
+      ]).then(() => setdidImageLoad2(true));
+    }
+  }, [view, didImageLoad2]);
+
+  useEffect(() => {
+    if (!didImageLoad3 && view2) {
+      Promise.allSettled([
+        imgPromise(astra1Ref, astra1),
+        imgPromise(astra2Ref, astra2),
+        imgPromise(astra3Ref, astra3),
+      ]).then(() => setdidImageLoad3(true));
+    }
+  }, [view2, didImageLoad3]);
 
   return (
     <Work
@@ -135,19 +165,19 @@ function OurWork() {
                     <motion.img
                       variants={photoAnim}
                       src={muse1_low}
-                      alt="athlete"
+                      alt="Landing page of muse showing a welcome message to the user and displaying all his playlists in a grid"
                       ref={muse1Ref}
                     />
                     <motion.img
                       variants={photoAnim}
                       src={muse2_low}
-                      alt="athlete"
+                      alt="displaying the responsive design of the web app on a ipad and iphone placed on the table"
                       ref={muse2Ref}
                     />
                     <motion.img
                       variants={photoAnim}
                       src={muse3_low}
-                      alt="athlete"
+                      alt="showing how the menus on the app look like"
                       ref={muse3Ref}
                     />
                   </div>
@@ -215,21 +245,25 @@ function OurWork() {
             <motion.div variants={fade} className="info-container">
               <div className="carousel">
                 <div className="slider">
+                  {!didImageLoad2 && <div className="blur" />}
                   <div className="img-container" ref={ref2}>
                     <motion.img
                       variants={photoAnim}
                       src={score1_low}
-                      alt="athlete"
+                      alt="Showing the landing page of score which has poster of cyberpunk 2077"
+                      ref={score1Ref}
                     />
                     <motion.img
                       variants={photoAnim}
                       src={score2_low}
-                      alt="athlete"
+                      alt="displaying the responsive design of the web app on a ipad and iphone placed on the table"
+                      ref={score2Ref}
                     />
                     <motion.img
                       variants={photoAnim}
                       src={score3_low}
-                      alt="athlete"
+                      alt="showing the game details page of the web app which is currently displaying god of war"
+                      ref={score3Ref}
                     />
                   </div>
                 </div>
@@ -275,7 +309,7 @@ function OurWork() {
                 </p>
                 <div className="button-container">
                   <button className="work-btn">View Project</button>
-                  <button className="work-btn">View Source Code</button>
+                  <button className="work-btn">View Code</button>
                 </div>
               </div>
             </motion.div>
@@ -296,21 +330,25 @@ function OurWork() {
             <motion.div variants={fade} className="info-container">
               <div className="carousel">
                 <div className="slider">
+                  {!didImageLoad3 && <div className="blur" />}
                   <div className="img-container" ref={ref3}>
                     <motion.img
                       variants={photoAnim}
                       src={astra1_low}
-                      alt="athlete"
+                      alt="the planets page of astra website is currently information of earth"
+                      ref={astra1Ref}
                     />
                     <motion.img
                       variants={photoAnim}
                       src={astra2_low}
-                      alt="athlete"
+                      alt="displaying the responsive design of the web app on a ipad and iphone placed on the table"
+                      ref={astra2Ref}
                     />
                     <motion.img
                       variants={photoAnim}
                       src={astra3_low}
-                      alt="athlete"
+                      alt="this section of the website shows the various known bodies that exist in our solar system"
+                      ref={astra3Ref}
                     />
                   </div>
                 </div>
@@ -355,7 +393,7 @@ function OurWork() {
                 </p>
                 <div className="button-container">
                   <button className="work-btn">View Project</button>
-                  <button className="work-btn">View Source Code</button>
+                  <button className="work-btn">View Code</button>
                 </div>
               </div>
             </motion.div>
@@ -372,7 +410,6 @@ const Work = styled(motion.div)`
   background: transparent;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
 
   h2 {
     font-weight: 700;
@@ -388,7 +425,7 @@ const Work = styled(motion.div)`
 
 const Movie = styled(motion.section)`
   scroll-snap-align: start;
-  padding: 10rem;
+  padding: 12rem;
   width: 100%;
   height: 100%;
 
@@ -396,12 +433,12 @@ const Movie = styled(motion.section)`
   align-items: center;
 
   @media screen and (max-width: 37.5em) {
-    padding: 10rem 5rem;
+    padding: 12rem 3rem;
   }
 
   .section-container {
     max-width: 100rem;
-    margin: 0 auto;
+    margin: auto;
   }
 
   .info-container {
@@ -411,6 +448,7 @@ const Movie = styled(motion.section)`
 
     @media screen and (max-width: 62.5em) {
       flex-direction: column;
+      gap: 0rem;
     }
   }
 
@@ -550,24 +588,24 @@ const Frame1 = styled(motion.div)`
   left: 0;
   width: 100%;
   height: 100vh;
-  /* background: #fffebf; */
-  background: #00c5a6;
+  background: #fffebf;
+  /* background: #00c5a6; */
   z-index: 100;
 `;
 
 const Frame2 = styled(Frame1)`
-  /* background: #ff8efb; */
-  background: #00afb1;
+  background: #ff8efb;
+  /* background: #00afb1; */
 `;
 
 const Frame3 = styled(Frame1)`
-  /* background: #8ed2ff; */
-  background: #0099b5;
+  background: #8ed2ff;
+  /* background: #0099b5; */
 `;
 
 const Frame4 = styled(Frame1)`
-  /* background: #8effa0; */
-  background: #0081b2;
+  background: #8effa0;
+  /* background: #0081b2; */
 `;
 
 export default OurWork;

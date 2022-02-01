@@ -203,17 +203,15 @@ const ContactStyle = styled(motion.div)`
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  padding: 12rem 10rem;
+
+  @media screen and (max-width: 37.5em) {
+    padding: 12rem 3rem;
+  }
 
   .main-contact-container {
-    padding: 5rem 10rem;
     max-width: 120rem;
-    padding: 10rem;
     margin: 0 auto;
-    /* overflow: scroll; */
-
-    @media screen and (max-width: 37.5em) {
-      padding: 5rem 5rem;
-    }
 
     h2 span {
       color: #23d997;
@@ -256,6 +254,10 @@ const ContactStyle = styled(motion.div)`
       @media screen and (max-width: 43.75em) {
         margin-bottom: 2rem;
         margin-top: 0rem;
+      }
+
+      @media screen and (min-width: 93.75em) {
+        margin-top: 3rem;
       }
 
       a {
@@ -431,16 +433,11 @@ const ContactStyle = styled(motion.div)`
     }
 
     .btn-container {
-      padding-top: 4rem;
       display: flex;
+      flex-direction: column;
       justify-content: space-between;
       align-items: center;
-
-      @media screen and (max-width: 43.75em) {
-        flex-direction: column;
-        gap: 1rem;
-        padding-top: 0rem;
-      }
+      gap: 1rem;
     }
 
     .submit-status {

@@ -6,7 +6,7 @@ export function useScroll() {
   const [element, view] = useInView({ threshold: 0.5 });
   view ? controls.start("show") : controls.start("hidden");
 
-  return [element, controls];
+  return [element, controls, view];
 }
 
 export default useScroll;

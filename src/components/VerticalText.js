@@ -70,6 +70,10 @@ const Vertical = styled(motion.div)`
     bottom: -15%;
   }
 
+  @media screen and (max-width: 20em) {
+    display: none;
+  }
+
   img {
     transform: rotate(90deg);
     display: inline-block;

@@ -73,10 +73,11 @@ const StyledNav = styled.nav`
     position: fixed;
     width: 100vw;
     top: 0;
-    z-index: 100;
+    z-index: 200;
+    /* backdrop-filter: blur(5px); */
 
     @media screen and (max-width: 37.5em) {
-      padding: 1rem 5rem;
+      padding: 1rem 3rem;
     }
   }
 
