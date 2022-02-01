@@ -19,7 +19,7 @@ import right from "../img/svg/arr-right.svg";
 import score1 from "../img/score/score1.png";
 import score1_low from "../img/score/score1-low.png";
 // import score1_mobile from "../img/score/score1-mobile.png";
-import score2 from "../img/score/score2.jpg";
+import score2 from "../img/score/score2.png";
 import score2_low from "../img/score/score2-low.jpg";
 import score3 from "../img/score/score3.png";
 import score3_low from "../img/score/score3-low.png";
@@ -28,7 +28,7 @@ import score3_low from "../img/score/score3-low.png";
 import muse1 from "../img/muse/muse1.png";
 import muse1_low from "../img/muse/muse1-low.png";
 // import muse1_mobile from "../img/muse/muse1-mobile.png";
-import muse2 from "../img/muse/muse2.jpg";
+import muse2 from "../img/muse/muse2.png";
 import muse2_low from "../img/muse/muse2-low.jpg";
 import muse3 from "../img/muse/muse3.png";
 import muse3_low from "../img/muse/muse3-low.png";
@@ -37,11 +37,20 @@ import muse3_low from "../img/muse/muse3-low.png";
 import astra1 from "../img/astra/astra1.png";
 import astra1_low from "../img/astra/astra1-low.png";
 // import astra1_mobile from "../img/astra/astra1-mobile.png";
-import astra2 from "../img/astra/astra2.jpg";
+import astra2 from "../img/astra/astra2.png";
 import astra2_low from "../img/astra/astra2-low.jpg";
 import astra3 from "../img/astra/astra3.png";
 import astra3_low from "../img/astra/astra3-low.png";
 // import astra3_mobile from "../img/astra/astra3-mobile.png";
+
+import flavors1 from "../img/flavors/flavors1.png";
+import flavors1_low from "../img/flavors/flavors1-low.png";
+// import flavors1_mobile from "../img/flavors/flavors1-mobile.png";
+import flavors2 from "../img/flavors/flavors2.png";
+import flavors2_low from "../img/flavors/flavors2-low.png";
+import flavors3 from "../img/flavors/flavors3.png";
+import flavors3_low from "../img/flavors/flavors3-low.png";
+// import flavors3_mobile from "../img/flavors/flavors3-mobile.png";
 
 function imgPromise(ref, newSrc) {
   return new Promise((resolve) => {
@@ -53,10 +62,12 @@ function imgPromise(ref, newSrc) {
 function OurWork() {
   const [element, controls, view] = useScroll();
   const [element2, controls2, view2] = useScroll();
+  const [element3, controls3, view3] = useScroll();
 
   const ref1 = useRef(null);
   const ref2 = useRef(null);
   const ref3 = useRef(null);
+  const ref4 = useRef(null);
 
   const muse1Ref = useRef(null);
   const muse2Ref = useRef(null);
@@ -70,13 +81,19 @@ function OurWork() {
   const astra2Ref = useRef(null);
   const astra3Ref = useRef(null);
 
+  const flavors1Ref = useRef(null);
+  const flavors2Ref = useRef(null);
+  const flavors3Ref = useRef(null);
+
   const [slide1, setSlide1] = useSlider(ref1);
   const [slide2, setSlide2] = useSlider(ref2);
   const [slide3, setSlide3] = useSlider(ref3);
+  const [slide4, setSlide4] = useSlider(ref4);
 
   const [didImageLoad, setdidImageLoad] = useState(false);
   const [didImageLoad2, setdidImageLoad2] = useState(false);
   const [didImageLoad3, setdidImageLoad3] = useState(false);
+  const [didImageLoad4, setdidImageLoad4] = useState(false);
 
   const history = useHistory();
 
@@ -131,6 +148,16 @@ function OurWork() {
     }
   }, [view2, didImageLoad3]);
 
+  useEffect(() => {
+    if (!didImageLoad4 && view3) {
+      Promise.allSettled([
+        imgPromise(flavors1Ref, flavors1),
+        imgPromise(flavors2Ref, flavors2),
+        imgPromise(flavors3Ref, flavors3),
+      ]).then(() => setdidImageLoad4(true));
+    }
+  }, [view3, didImageLoad4]);
+
   return (
     <Work
       drag="x"
@@ -145,10 +172,10 @@ function OurWork() {
     >
       <motion.div variants={sliderContainer}>
         <Frame1 variants={slide}></Frame1>
-        <Frame2 variants={slide}></Frame2>
-        <Frame3 variants={slide}></Frame3>
-        <Frame4 variants={slide}></Frame4>
-        <Frame5 variants={slide}></Frame5>
+        {/* <Frame2 variants={slide}></Frame2> */}
+        {/* <Frame3 variants={slide}></Frame3> */}
+        {/* <Frame4 variants={slide}></Frame4> */}
+        {/* <Frame5 variants={slide}></Frame5> */}
       </motion.div>
 
       <div className="container">
@@ -224,8 +251,20 @@ function OurWork() {
                   get an access token from Spotify API.
                 </p>
                 <div className="button-container">
-                  <button className="work-btn">View Project</button>
-                  <button className="work-btn">View Code</button>
+                  <a
+                    href="https://muse-music-player.netlify.app/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <button className="work-btn">View Project</button>
+                  </a>
+                  <a
+                    href="https://github.com/MandySpace/Muse"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <button className="work-btn">View Code</button>
+                  </a>
                 </div>
               </motion.div>
             </div>
@@ -309,8 +348,20 @@ function OurWork() {
                   match.
                 </p>
                 <div className="button-container">
-                  <button className="work-btn">View Project</button>
-                  <button className="work-btn">View Code</button>
+                  <a
+                    href="https://score-games.netlify.app/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <button className="work-btn">View Project</button>
+                  </a>
+                  <a
+                    href="https://github.com/MandySpace/GameFinder"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <button className="work-btn">View Code</button>
+                  </a>
                 </div>
               </div>
             </motion.div>
@@ -387,14 +438,124 @@ function OurWork() {
               </div>
               <div className="about-project">
                 <p>
-                  Take a virtual tour of the solar system with astra. Explore
-                  the planets like you've never before and satisfy your inner
+                  Take a virtual tour of the solar system with astra and explore
+                  the planets like you've never before to satisfy your inner
                   curiosity. The exploration of space by humans is an incredible
                   feat and you can know more about it on Astra!
                 </p>
                 <div className="button-container">
-                  <button className="work-btn">View Project</button>
-                  <button className="work-btn">View Code</button>
+                  <a
+                    href="https://flavors-recipe.netlify.app/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <button className="work-btn">View Project</button>
+                  </a>
+                  <a
+                    href="https://github.com/MandySpace/Explore-the-Solar-System"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <button className="work-btn">View Code</button>
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </Movie>
+
+        <Movie
+          variants={fade}
+          ref={element3}
+          animate={controls3}
+          initial="hidden"
+        >
+          <div className="section-container">
+            <h2>
+              <span>04.</span> Flavors
+            </h2>
+            <motion.div variants={lineAnim} className="line"></motion.div>
+            <motion.div variants={fade} className="info-container">
+              <div className="carousel">
+                <div className="slider">
+                  {!didImageLoad4 && <div className="blur" />}
+                  <div className="img-container" ref={ref4}>
+                    <motion.img
+                      variants={photoAnim}
+                      src={flavors1_low}
+                      alt="the planets page of flavors website is currently information of earth"
+                      ref={flavors1Ref}
+                    />
+                    <motion.img
+                      variants={photoAnim}
+                      src={flavors2_low}
+                      alt="displaying the responsive design of the web app on a ipad and iphone placed on the table"
+                      ref={flavors2Ref}
+                    />
+                    <motion.img
+                      variants={photoAnim}
+                      src={flavors3_low}
+                      alt="this section of the website shows the various known bodies that exist in our solar system"
+                      ref={flavors3Ref}
+                    />
+                  </div>
+                </div>
+                <div className="img-navigation">
+                  <div
+                    className="left-arr"
+                    onClick={arrowHandler(setSlide4, slide4, -1)}
+                  >
+                    <img src={left} alt="arrow-left" />
+                  </div>
+                  <div
+                    className="dots-container"
+                    onClick={dotHandler(setSlide4)}
+                  >
+                    <div
+                      className={`dot ${slide4 === 0 ? "dot-active" : ""}`}
+                      data-slide={0}
+                    ></div>
+                    <div
+                      className={`dot ${slide4 === 1 ? "dot-active" : ""}`}
+                      data-slide={1}
+                    ></div>
+                    <div
+                      className={`dot ${slide4 === 2 ? "dot-active" : ""}`}
+                      data-slide={2}
+                    ></div>
+                  </div>
+                  <div
+                    className="right-arr"
+                    onClick={arrowHandler(setSlide4, slide4, 1)}
+                  >
+                    <img src={right} alt="arrow-right" />
+                  </div>
+                </div>
+              </div>
+              <div className="about-project">
+                <p>
+                  Flavors lets you search for your favourite recipe and provides
+                  you with a comprehensive list of ingredients and intructions
+                  needed to prepare your next meal. Choose from various
+                  cuisines, diets and meals. For those keeping a tight check on
+                  their calorie intake we have got you covered with the calorie
+                  filter.
+                </p>
+                <div className="button-container">
+                  <a
+                    href="https://muse-music-player.netlify.app/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <button className="work-btn">View Project</button>
+                  </a>
+                  <a
+                    href="https://github.com/MandySpace/Flavors"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <button className="work-btn">View Code</button>
+                  </a>
                 </div>
               </div>
             </motion.div>
@@ -593,30 +754,30 @@ const Frame1 = styled(motion.div)`
   left: 0;
   width: 100%;
   height: 100vh;
-  background: #9b5de5;
+  background-image: linear-gradient(to left, #23d997, #252525);
   /* background: #00c5a6; */
   z-index: 100;
   will-change: transform;
 `;
 
-const Frame2 = styled(Frame1)`
-  background: #f15bb5;
-  /* background: #00afb1; */
-`;
+// const Frame2 = styled(Frame1)`
+//   background: #f15bb5;
+//   /* background: #00afb1; */
+// `;
 
-const Frame3 = styled(Frame1)`
-  background: #fee440;
-  /* background: #0099b5; */
-`;
+// const Frame3 = styled(Frame1)`
+//   background: #fee440;
+//   /* background: #0099b5; */
+// `;
 
-const Frame4 = styled(Frame1)`
-  background: #00bbf9;
-  /* background: #0081b2; */
-`;
+// const Frame4 = styled(Frame1)`
+//   background: #00bbf9;
+//   /* background: #0081b2; */
+// `;
 
-const Frame5 = styled(Frame1)`
-  background: #23d997;
-  /* background: #00f5d4; */
-`;
+// const Frame5 = styled(Frame1)`
+//   background: #23d997;
+//   /* background: #00f5d4; */
+// `;
 
 export default OurWork;
