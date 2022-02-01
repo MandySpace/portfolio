@@ -65,7 +65,7 @@ body {
     /* background: #1b1b1b; */
     /* background:#07101f; */
     color: white;
-    overflow:hidden;
+    
 }
 
 button {

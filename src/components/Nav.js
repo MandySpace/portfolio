@@ -67,8 +67,7 @@ const StyledNav = styled.nav`
     justify-content: space-between;
     align-items: center;
     padding: 1rem 10rem;
-    padding-top: 2rem;
-    padding-bottom: 0;
+
     /* background: #1b1b1b; */
     background: transparent;
     position: fixed;

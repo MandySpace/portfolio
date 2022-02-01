@@ -15,9 +15,43 @@ import { useScroll } from "../components/useScroll";
 import ScrollTop from "../components/ScrollTop";
 import { useHistory } from "react-router-dom";
 import useSlider from "../components/useSlider";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import left from "../img/svg/arr-left.svg";
 import right from "../img/svg/arr-right.svg";
+
+import score1 from "../img/score/score1.png";
+import score1_low from "../img/score/score1-low.png";
+import score1_mobile from "../img/score/score1-mobile.png";
+import score2 from "../img/score/score2.jpg";
+import score2_low from "../img/score/score2-low.jpg";
+import score3 from "../img/score/score3.png";
+import score3_low from "../img/score/score3-low.png";
+import score3_mobile from "../img/score/score3-mobile.png";
+
+import muse1 from "../img/muse/muse1.png";
+import muse1_low from "../img/muse/muse1-low.png";
+import muse1_mobile from "../img/muse/muse1-mobile.png";
+import muse2 from "../img/muse/muse2.jpg";
+import muse2_low from "../img/muse/muse2-low.jpg";
+import muse3 from "../img/muse/muse3.png";
+import muse3_low from "../img/muse/muse3-low.png";
+import muse3_mobile from "../img/muse/muse3-mobile.png";
+
+import astra1 from "../img/astra/astra1.png";
+import astra1_low from "../img/astra/astra1-low.png";
+import astra1_mobile from "../img/astra/astra1-mobile.png";
+import astra2 from "../img/astra/astra2.jpg";
+import astra2_low from "../img/astra/astra2-low.jpg";
+import astra3 from "../img/astra/astra3.png";
+import astra3_low from "../img/astra/astra3-low.png";
+import astra3_mobile from "../img/astra/astra3-mobile.png";
+
+function imgPromise(ref, newSrc) {
+  return new Promise((resolve) => {
+    ref.current.src = newSrc;
+    ref.current.addEventListener("load", () => resolve());
+  });
+}
 
 function OurWork() {
   const [element, controls] = useScroll();
@@ -27,9 +61,15 @@ function OurWork() {
   const ref2 = useRef(null);
   const ref3 = useRef(null);
 
+  const muse1Ref = useRef(null);
+  const muse2Ref = useRef(null);
+  const muse3Ref = useRef(null);
+
   const [slide1, setSlide1] = useSlider(ref1);
   const [slide2, setSlide2] = useSlider(ref2);
   const [slide3, setSlide3] = useSlider(ref3);
+
+  const [didImageLoad, setdidImageLoad] = useState(false);
 
   const history = useHistory();
 
@@ -55,6 +95,14 @@ function OurWork() {
       else setSlide(slide + direction);
     };
   };
+
+  useEffect(() => {
+    Promise.allSettled([
+      imgPromise(muse1Ref, muse1),
+      imgPromise(muse2Ref, muse2),
+      imgPromise(muse3Ref, muse3),
+    ]).then(() => setdidImageLoad(true));
+  }, []);
 
   return (
     <Work
@@ -85,14 +133,26 @@ function OurWork() {
             <div className="info-container">
               <div className="carousel">
                 <div className="slider">
+                  {!didImageLoad && <div className="blur" />}
                   <div className="img-container" ref={ref1}>
-                    <motion.img variants={photoAnim} src={muse} alt="athlete" />
                     <motion.img
                       variants={photoAnim}
-                      src={athlete}
+                      src={muse1_low}
                       alt="athlete"
+                      ref={muse1Ref}
                     />
-                    <motion.img variants={photoAnim} src={a} alt="athlete" />
+                    <motion.img
+                      variants={photoAnim}
+                      src={muse2_low}
+                      alt="athlete"
+                      ref={muse2Ref}
+                    />
+                    <motion.img
+                      variants={photoAnim}
+                      src={muse3_low}
+                      alt="athlete"
+                      ref={muse3Ref}
+                    />
                   </div>
                 </div>
                 <motion.div variants={fade} className="img-navigation">
@@ -132,8 +192,8 @@ function OurWork() {
                   A web app for streaming Spotify music, visualizing and
                   managing your playlists. You can search for your favourite
                   tunes or access your favourite music from your playlists. This
-                  app uses Implicit Grant flow to request and get an access
-                  token.
+                  app uses OAuth2 standard (Implicit Grant flow) to request and
+                  get an access token from Spotify API.
                 </p>
                 <div className="button-container">
                   <button className="work-btn">View Project</button>
@@ -151,19 +211,29 @@ function OurWork() {
           initial="hidden"
         >
           <div className="section-container">
-            <h2>The Racer</h2>
+            <h2>
+              <span>02.</span> Score
+            </h2>
             <motion.div variants={lineAnim} className="line"></motion.div>
             <motion.div variants={fade} className="info-container">
               <div className="carousel">
                 <div className="slider">
                   <div className="img-container" ref={ref2}>
-                    <motion.img variants={photoAnim} src={muse} alt="athlete" />
                     <motion.img
                       variants={photoAnim}
-                      src={athlete}
+                      src={score1_low}
                       alt="athlete"
                     />
-                    <motion.img variants={photoAnim} src={a} alt="athlete" />
+                    <motion.img
+                      variants={photoAnim}
+                      src={score2_low}
+                      alt="athlete"
+                    />
+                    <motion.img
+                      variants={photoAnim}
+                      src={score3_low}
+                      alt="athlete"
+                    />
                   </div>
                 </div>
                 <div className="img-navigation">
@@ -200,10 +270,11 @@ function OurWork() {
               </div>
               <div className="about-project">
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Nostrum pariatur odit laudantium exercitationem quae sint
-                  impedit voluptate ratione laboriosam. Odit quam alias
-                  voluptatibus reiciendis dolorem neque enim beatae fugit esse.
+                  Score allows you to search and view all the upcoming, latest
+                  and popular games. You can filter out results based on
+                  different platforms, genres and metacritic score. Don't know
+                  what to play? This web app will make sure you find your exact
+                  match.
                 </p>
                 <div className="button-container">
                   <button className="work-btn">View Project</button>
@@ -221,19 +292,29 @@ function OurWork() {
           initial="hidden"
         >
           <div className="section-container">
-            <h2>Good Times</h2>
+            <h2>
+              <span>03.</span> Astra
+            </h2>
             <motion.div variants={lineAnim} className="line"></motion.div>
             <motion.div variants={fade} className="info-container">
               <div className="carousel">
                 <div className="slider">
                   <div className="img-container" ref={ref3}>
-                    <motion.img variants={photoAnim} src={muse} alt="athlete" />
                     <motion.img
                       variants={photoAnim}
-                      src={athlete}
+                      src={astra1_low}
                       alt="athlete"
                     />
-                    <motion.img variants={photoAnim} src={a} alt="athlete" />
+                    <motion.img
+                      variants={photoAnim}
+                      src={astra2_low}
+                      alt="athlete"
+                    />
+                    <motion.img
+                      variants={photoAnim}
+                      src={astra3_low}
+                      alt="athlete"
+                    />
                   </div>
                 </div>
                 <div className="img-navigation">
@@ -270,10 +351,10 @@ function OurWork() {
               </div>
               <div className="about-project">
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Nostrum pariatur odit laudantium exercitationem quae sint
-                  impedit voluptate ratione laboriosam. Odit quam alias
-                  voluptatibus reiciendis dolorem neque enim beatae fugit esse.
+                  Take a virtual tour of the solar system with astra. Explore
+                  the planets like you've never before and satisfy your inner
+                  curiosity. The exploration of space by humans is an incredible
+                  feat and you can know more about it on Astra!
                 </p>
                 <div className="button-container">
                   <button className="work-btn">View Project</button>
@@ -294,6 +375,7 @@ const Work = styled(motion.div)`
   background: transparent;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 
   h2 {
     font-weight: 700;
@@ -345,6 +427,14 @@ const Movie = styled(motion.section)`
     overflow: hidden;
     aspect-ratio: 16/9;
     width: 100%;
+    position: relative;
+
+    .blur {
+      position: absolute;
+      inset: 0;
+      backdrop-filter: blur(50px);
+      z-index: 10;
+    }
   }
 
   .carousel {
@@ -465,7 +555,7 @@ const Frame1 = styled(motion.div)`
   height: 100vh;
   /* background: #fffebf; */
   background: #00c5a6;
-  z-index: 2;
+  z-index: 100;
 `;
 
 const Frame2 = styled(Frame1)`
