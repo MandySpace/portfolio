@@ -148,6 +148,7 @@ function OurWork() {
         <Frame2 variants={slide}></Frame2>
         <Frame3 variants={slide}></Frame3>
         <Frame4 variants={slide}></Frame4>
+        <Frame5 variants={slide}></Frame5>
       </motion.div>
 
       <div className="container">
@@ -410,6 +411,7 @@ const Work = styled(motion.div)`
   background: transparent;
   width: 100vw;
   height: 100vh;
+  will-change: transform;
 
   h2 {
     font-weight: 700;
@@ -456,6 +458,7 @@ const Movie = styled(motion.section)`
     height: 0.5rem;
     background: #23d997;
     margin-bottom: 3rem;
+    will-change: transform;
   }
 
   .slider {
@@ -483,6 +486,7 @@ const Movie = styled(motion.section)`
     display: flex;
     will-change: transform;
     width: 100%;
+    will-change: transform;
     transition: all 1s ease-in-out;
   }
 
@@ -572,6 +576,7 @@ const Movie = styled(motion.section)`
     width: 100%;
     object-fit: cover;
     object-position: center;
+    will-change: transform;
 
     user-drag: none;
     -webkit-user-drag: none;
@@ -588,24 +593,30 @@ const Frame1 = styled(motion.div)`
   left: 0;
   width: 100%;
   height: 100vh;
-  background: #fffebf;
+  background: #9b5de5;
   /* background: #00c5a6; */
   z-index: 100;
+  will-change: transform;
 `;
 
 const Frame2 = styled(Frame1)`
-  background: #ff8efb;
+  background: #f15bb5;
   /* background: #00afb1; */
 `;
 
 const Frame3 = styled(Frame1)`
-  background: #8ed2ff;
+  background: #fee440;
   /* background: #0099b5; */
 `;
 
 const Frame4 = styled(Frame1)`
-  background: #8effa0;
+  background: #00bbf9;
   /* background: #0081b2; */
+`;
+
+const Frame5 = styled(Frame1)`
+  background: #23d997;
+  /* background: #00f5d4; */
 `;
 
 export default OurWork;

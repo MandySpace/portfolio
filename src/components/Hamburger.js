@@ -21,7 +21,7 @@ function Hamburger() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { pathname } = useLocation();
 
-  const menuClickHandler = (e) => {
+  const menuClickHandler = () => {
     setIsMenuOpen(false);
   };
 
@@ -143,9 +143,6 @@ const HamMenu = styled(motion.div)`
 
   .menu-bg-2 {
     right: 0;
-  }
-
-  .menu-mobile {
   }
 
   .menu-mobile-list {

@@ -11,6 +11,7 @@ export const About = styled(motion.div)`
   justify-content: center;
   padding: 12rem 10rem;
   color: white;
+  will-change: transform;
 
   @media screen and (max-width: 37.5em) {
     padding: 12rem 3rem;
@@ -20,6 +21,7 @@ export const About = styled(motion.div)`
     position: absolute;
     left: 50%;
     top: 80%;
+    will-change: transform;
     transform: translateX(-50%);
 
     user-drag: none;
@@ -47,18 +49,7 @@ export const Description = styled.div`
 
   h2 {
     font-weight: lighter;
-  }
-`;
-
-export const Image = styled.div`
-  flex: 1;
-  overflow: hidden;
-  z-index: 2;
-
-  img {
-    width: 100%;
-    height: 80vh;
-    object-fit: cover;
+    will-change: transform;
   }
 `;
 
@@ -66,24 +57,13 @@ export const Hide = styled.div`
   overflow: hidden;
 `;
 
-export const Lens = styled.div`
-  width: 100px;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  position: absolute;
-  border: 3px solid #23d997;
-  background: transparent;
-  backdrop-filter: drop-shadow(4px 4px 10px blue);
-  transform: translate(-50%, -50%);
-  display: none;
-  pointer-events: none;
-`;
-
 export const SubHeading = styled(motion.p)`
   font-weight: 300;
+  will-change: transform;
 `;
 
 export const Serif = styled(motion.p)`
   font-family: "Inconsolata", monospace;
   padding: 1rem 0;
+  will-change: transform;
 `;
