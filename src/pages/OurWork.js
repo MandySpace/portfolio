@@ -1,7 +1,4 @@
 import styled from "styled-components";
-import athlete from "../img/athlete-small.png";
-import a from "../img/a.png";
-import muse from "../img/muse.png";
 import { motion } from "framer-motion";
 import {
   pageAnimation,
@@ -19,32 +16,32 @@ import { useEffect, useRef, useState } from "react";
 import left from "../img/svg/arr-left.svg";
 import right from "../img/svg/arr-right.svg";
 
-import score1 from "../img/score/score1.png";
+// import score1 from "../img/score/score1.png";
 import score1_low from "../img/score/score1-low.png";
-import score1_mobile from "../img/score/score1-mobile.png";
-import score2 from "../img/score/score2.jpg";
+// import score1_mobile from "../img/score/score1-mobile.png";
+// import score2 from "../img/score/score2.jpg";
 import score2_low from "../img/score/score2-low.jpg";
-import score3 from "../img/score/score3.png";
+// import score3 from "../img/score/score3.png";
 import score3_low from "../img/score/score3-low.png";
-import score3_mobile from "../img/score/score3-mobile.png";
+// import score3_mobile from "../img/score/score3-mobile.png";
 
 import muse1 from "../img/muse/muse1.png";
 import muse1_low from "../img/muse/muse1-low.png";
-import muse1_mobile from "../img/muse/muse1-mobile.png";
+// import muse1_mobile from "../img/muse/muse1-mobile.png";
 import muse2 from "../img/muse/muse2.jpg";
 import muse2_low from "../img/muse/muse2-low.jpg";
 import muse3 from "../img/muse/muse3.png";
 import muse3_low from "../img/muse/muse3-low.png";
-import muse3_mobile from "../img/muse/muse3-mobile.png";
+// import muse3_mobile from "../img/muse/muse3-mobile.png";
 
-import astra1 from "../img/astra/astra1.png";
+// import astra1 from "../img/astra/astra1.png";
 import astra1_low from "../img/astra/astra1-low.png";
-import astra1_mobile from "../img/astra/astra1-mobile.png";
-import astra2 from "../img/astra/astra2.jpg";
+// import astra1_mobile from "../img/astra/astra1-mobile.png";
+// import astra2 from "../img/astra/astra2.jpg";
 import astra2_low from "../img/astra/astra2-low.jpg";
-import astra3 from "../img/astra/astra3.png";
+// import astra3 from "../img/astra/astra3.png";
 import astra3_low from "../img/astra/astra3-low.png";
-import astra3_mobile from "../img/astra/astra3-mobile.png";
+// import astra3_mobile from "../img/astra/astra3-mobile.png";
 
 function imgPromise(ref, newSrc) {
   return new Promise((resolve) => {
