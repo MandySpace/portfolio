@@ -44,26 +44,12 @@ html{
   @media screen and (max-width:75em){
     font-size: 50%;
   }
-
-  /* @media screen and (max-width:50em){
-    font-size: 45%;
-  } */
-
-  /* @media screen and (max-width:40.625em){
-    font-size: 36%;
-  }
-
-  @media screen and (max-width:25em){
-    font-size: 33%;
-  } */
 }
 
 body {
     font-family: 'Inter', sans-serif;
     background: radial-gradient( #252525,#161616);
     background-attachment: fixed;
-    /* background: #1b1b1b; */
-    /* background:#07101f; */
     color: white;
     
 }
@@ -74,7 +60,6 @@ button {
     font-size: 1.1rem;
     padding: 1em 2em;
     border: 3px solid #23d997;
-    /* border-radius: 5px; */
     background: transparent;
     color: white;
     transition: all 0.5s ease;
@@ -88,9 +73,7 @@ button {
       border: 2px solid #23d997;
     }
 
-    @media screen and (max-width:75em){
-      /* font-size: 1.2rem; */
-    }
+   
 }
 
 h2 {
@@ -131,18 +114,6 @@ p {
     line-height: 1.6 ;
 }
 
-button, a {
-  &:focus{
-      outline: none;
-      outline: 2px solid #23d997;
-      outline-offset: 2px;
-
-      @media screen and (max-width: 62.5em){
-        outline: none;
-      }
-    }
-}
-
 
 .trail {
   width: 1.875rem;
@@ -159,7 +130,7 @@ button, a {
   @media (hover: none){
     display:none;
   }
-  /* backdrop-filter: invert(0.7); */
+
 
 }
 

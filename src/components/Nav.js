@@ -121,6 +121,12 @@ const StyledNav = styled.nav`
     li {
       padding-left: 10rem;
       position: relative;
+
+      @media (hover: hover) {
+        &:hover {
+          transform: translateY(-2px);
+        }
+      }
     }
 
     @media screen and (max-width: 62.5em) {
