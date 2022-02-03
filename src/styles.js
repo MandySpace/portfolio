@@ -24,12 +24,14 @@ export const About = styled(motion.div)`
     will-change: transform;
     transform: translateX(-50%);
 
-    user-drag: none;
-    -webkit-user-drag: none;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
+    img {
+      user-drag: none;
+      -webkit-user-drag: none;
+      user-select: none;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+    }
 
     @media screen and (max-width: 93.75rem) {
       top: 75%;
@@ -50,6 +52,10 @@ export const Description = styled.div`
   h2 {
     font-weight: lighter;
     will-change: transform;
+  }
+
+  .letter {
+    display: inline;
   }
 `;
 

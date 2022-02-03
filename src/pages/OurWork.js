@@ -160,11 +160,6 @@ function OurWork() {
 
   return (
     <Work
-      drag="x"
-      dragConstraints={{ left: 0, right: 0 }}
-      dragElastic={0.8}
-      dragTransition={{ bounceStiffness: 10, bounceDamping: 5 }}
-      onPan={panHandler}
       variants={pageAnimation(0.1, 0.2, 0.2)}
       initial="hidden"
       animate="show"
@@ -172,13 +167,20 @@ function OurWork() {
     >
       <motion.div variants={sliderContainer}>
         <Frame1 variants={slide}></Frame1>
-        {/* <Frame2 variants={slide}></Frame2> */}
-        {/* <Frame3 variants={slide}></Frame3> */}
+        <Frame2 variants={slide}></Frame2>
+        <Frame3 variants={slide}></Frame3>
         {/* <Frame4 variants={slide}></Frame4> */}
-        {/* <Frame5 variants={slide}></Frame5> */}
+        <Frame5 variants={slide}></Frame5>
       </motion.div>
 
-      <div className="container">
+      <motion.div
+        drag="x"
+        dragConstraints={{ left: 0, right: 0 }}
+        dragElastic={0.8}
+        dragTransition={{ bounceStiffness: 10, bounceDamping: 5 }}
+        onPan={panHandler}
+        className="container"
+      >
         <Movie>
           <div className="section-container">
             <motion.h2 variants={fade}>
@@ -561,7 +563,7 @@ function OurWork() {
             </motion.div>
           </div>
         </Movie>
-      </div>
+      </motion.div>
       <ScrollTop />
     </Work>
   );
@@ -752,32 +754,33 @@ const Frame1 = styled(motion.div)`
   position: fixed;
   top: 10%;
   left: 0;
-  width: 100%;
+  width: 200%;
+  /* aspect-ratio: 1; */
   height: 100vh;
-  background-image: linear-gradient(to left, #23d997, #252525);
-  /* background: #00c5a6; */
+  /* background-image: linear-gradient(to left, #23d997, #252525); */
+  background: #00bbf982;
   z-index: 100;
   will-change: transform;
 `;
 
-// const Frame2 = styled(Frame1)`
-//   background: #f15bb5;
-//   /* background: #00afb1; */
-// `;
+const Frame2 = styled(Frame1)`
+  background: #f15bb57a;
+  /* background: #00afb1; */
+`;
 
-// const Frame3 = styled(Frame1)`
-//   background: #fee440;
-//   /* background: #0099b5; */
-// `;
+const Frame3 = styled(Frame1)`
+  background: #fee54081;
+  /* background: #0099b5; */
+`;
 
 // const Frame4 = styled(Frame1)`
 //   background: #00bbf9;
 //   /* background: #0081b2; */
 // `;
 
-// const Frame5 = styled(Frame1)`
-//   background: #23d997;
-//   /* background: #00f5d4; */
-// `;
+const Frame5 = styled(Frame1)`
+  background: #23d99684;
+  /* background: #00f5d4; */
+`;
 
 export default OurWork;

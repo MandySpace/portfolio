@@ -275,3 +275,26 @@ export const listMenuAnim = {
     },
   },
 };
+
+export const listAnim = {
+  hidden: {
+    y: -200,
+  },
+  show: {
+    y: 0,
+    transition: {
+      duration: 0.5,
+      type: "spring",
+      bounce: 0.3,
+    },
+  },
+};
+
+export const rotateAnim = {
+  show: {
+    x: [0, 100],
+    transition: {
+      duration: 1,
+    },
+  },
+};

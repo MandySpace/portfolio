@@ -99,7 +99,12 @@ h4 {
 }
 
 a {
-    font-size: 1.1rem;;
+    font-size: 1.1rem;
+
+    &:hover body .trail{
+    transform: scale(0.5);
+    border: 3px solid #2378d9;
+  }
 }
 
 span {
@@ -114,7 +119,6 @@ p {
     line-height: 1.6 ;
 }
 
-
 .trail {
   width: 1.875rem;
   aspect-ratio: 1;
@@ -126,11 +130,14 @@ p {
   transform: translate(-50%, -50%);
   pointer-events: none;
   opacity: 0.2;
-
+ 
   @media (hover: none){
     display:none;
   }
 
+  @media screen and (max-width:93.75em){
+    border: 2px solid #23d997;
+  }
 
 }
 
@@ -138,6 +145,13 @@ p {
   backdrop-filter: invert(0.7);
   opacity: 1;
 }
+
+a:hover ~ .trail { 
+ 
+  background: #000;
+  transform: scale(0.5);
+
+    }
 `;
 
 export default GlobalStyle;

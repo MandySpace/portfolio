@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import Hamburger from "./Hamburger";
 import logo from "../img/svg/logo.svg";
+import { listAnim } from "../animation";
 
 function Nav() {
   const { pathname } = useLocation();
@@ -15,32 +16,41 @@ function Nav() {
             <img src={logo} alt="" className="logo" />
           </div>
         </Link>
-        <ul className="menu-list">
-          <li>
+        <motion.ul
+          initial="hidden"
+          animate="show"
+          transition={{
+            staggerChildren: 0.15,
+            delay: 5,
+            when: "beforeChildren",
+          }}
+          className="menu-list"
+        >
+          <motion.li variants={listAnim}>
             <Link to="/">
               <span>01.</span> About
               <motion.div
                 className={`line ${pathname === "/" ? "active" : ""}`}
               />
             </Link>
-          </li>
-          <li>
+          </motion.li>
+          <motion.li variants={listAnim}>
             <Link to="/work">
               <span>02.</span> Projects
               <motion.div
                 className={`line ${pathname === "/work" ? "active" : ""}`}
               />
             </Link>
-          </li>
-          <li>
+          </motion.li>
+          <motion.li variants={listAnim}>
             <Link to="/contact">
               <span>03.</span> Contact
               <motion.div
                 className={`line ${pathname === "/contact" ? "active" : ""}`}
               />
             </Link>
-          </li>
-        </ul>
+          </motion.li>
+        </motion.ul>
         <Hamburger />
       </div>
     </StyledNav>
@@ -112,6 +122,13 @@ const StyledNav = styled.nav`
     text-decoration: none;
     color: white;
     padding: 1rem 0;
+    transition: all 0.3s;
+
+    @media (hover: hover) {
+      &:hover {
+        color: #23d996;
+      }
+    }
   }
 
   .menu-list {
@@ -121,12 +138,6 @@ const StyledNav = styled.nav`
     li {
       padding-left: 10rem;
       position: relative;
-
-      @media (hover: hover) {
-        &:hover {
-          transform: translateY(-2px);
-        }
-      }
     }
 
     @media screen and (max-width: 62.5em) {
