@@ -7,6 +7,7 @@ import github from "../img/svg/github.svg";
 import copy_white from "../img/svg/copy_white.svg";
 import linkedin from "../img/svg/linkedin.svg";
 import { useRef } from "react";
+import useCursor from "../components/useCursor";
 
 function ContactUs({ name, email, message, setName, setEmail, setMessage }) {
   const history = useHistory();
@@ -14,6 +15,8 @@ function ContactUs({ name, email, message, setName, setEmail, setMessage }) {
   const copyToClipRef = useRef(null);
 
   const formNotifRef = useRef(null);
+
+  useCursor();
 
   function copyToClipboard(text) {
     navigator.clipboard.writeText(text);
@@ -50,7 +53,7 @@ function ContactUs({ name, email, message, setName, setEmail, setMessage }) {
           }),
         }
       );
-      console.log(response);
+
       if (response.ok) {
         setName("");
         setEmail("");
@@ -60,7 +63,6 @@ function ContactUs({ name, email, message, setName, setEmail, setMessage }) {
         formNotifRef.current.classList.add("show");
         setTimeout(() => formNotifRef.current.classList.remove("show"), 3000);
       } else {
-        console.log("erger");
         throw new Error();
       }
     } catch (err) {
@@ -146,7 +148,9 @@ function ContactUs({ name, email, message, setName, setEmail, setMessage }) {
               <span ref={formNotifRef} className="submit-status">
                 Form submitted successfully
               </span>
-              <button className="form-btn">Submit</button>
+              <a href="dsb">
+                <button className="form-btn">Submit</button>
+              </a>
             </motion.div>
           </form>
           <div className="contact-info">

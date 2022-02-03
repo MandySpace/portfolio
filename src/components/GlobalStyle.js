@@ -130,6 +130,8 @@ p {
   transform: translate(-50%, -50%);
   pointer-events: none;
   opacity: 0.2;
+  will-change: border;
+  transition: border .3s ease-out;
  
   @media (hover: none){
     display:none;
@@ -146,12 +148,13 @@ p {
   opacity: 1;
 }
 
-a:hover ~ .trail { 
- 
-  background: #000;
-  transform: scale(0.5);
+.trail-shrink{
+  /* transform-origin: left top;
+  transform: scale(.8);  */
+  border: 3px solid #da57c4;
+}
 
-    }
+
 `;
 
 export default GlobalStyle;

@@ -11,6 +11,7 @@ export const About = styled(motion.div)`
   justify-content: center;
   padding: 12rem 10rem;
   color: white;
+  overflow: hidden;
   will-change: transform;
 
   @media screen and (max-width: 37.5em) {

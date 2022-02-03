@@ -15,6 +15,7 @@ import useSlider from "../components/useSlider";
 import { useEffect, useRef, useState } from "react";
 import left from "../img/svg/arr-left.svg";
 import right from "../img/svg/arr-right.svg";
+import useCursor from "../components/useCursor";
 
 import score1 from "../img/score/score1.png";
 import score1_low from "../img/score/score1-low.png";
@@ -94,6 +95,8 @@ function OurWork() {
   const [didImageLoad2, setdidImageLoad2] = useState(false);
   const [didImageLoad3, setdidImageLoad3] = useState(false);
   const [didImageLoad4, setdidImageLoad4] = useState(false);
+
+  useCursor();
 
   const history = useHistory();
 

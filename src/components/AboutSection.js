@@ -4,9 +4,12 @@ import { titleAnim, fade, swipeAnim } from "../animation";
 import { useHistory } from "react-router-dom";
 import VerticalText from "../components/VerticalText";
 import swipe from "../img/svg/swipe.svg";
+import { Link } from "react-router-dom";
+import useCursor from "./useCursor";
 
 function AboutSection() {
   const history = useHistory();
+  useCursor();
 
   const panHandler = (_, i) => {
     if (i.offset.x < -100) {
@@ -46,10 +49,9 @@ function AboutSection() {
           high-end interactive experiences and products. I'm a firm believer in
           prioritising user experience, accessibility and responsive design.
         </SubHeading>
-
-        <motion.button variants={fade} onClick={() => history.push("/work")}>
-          Check out my projects
-        </motion.button>
+        <Link to="/work">
+          <motion.button variants={fade}>Check out my projects</motion.button>
+        </Link>
       </Description>
       <VerticalText />
       <div className="swipe">
