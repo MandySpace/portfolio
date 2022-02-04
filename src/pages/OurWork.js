@@ -249,7 +249,7 @@ function OurWork() {
               </div>
               <motion.div variants={fade} className="about-project">
                 <p>
-                  A web app for streaming Spotify music, visualizing and
+                  A web app for streaming Spotify music, visualising and
                   managing your playlists. You can search for your favourite
                   tunes or access your favourite music from your playlists. This
                   app uses OAuth2 standard (Implicit Grant flow) to request and
