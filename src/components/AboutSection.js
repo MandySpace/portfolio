@@ -35,19 +35,33 @@ function AboutSection() {
               <Serif variants={titleAnim}>Hi!, My name is </Serif>
             </Hide>
             <motion.h2 variants={titleAnim}>
-              <span>Amandeep Singh</span>
+              <span>
+                <strong>Amandeep Singh</strong>
+              </span>
             </motion.h2>
           </Hide>
           <Hide>
             <motion.h2 variants={titleAnim}>
-              I'm a <span>Frontend</span> Developer.
+              I'm a{" "}
+              <strong>
+                <span>Frontend</span>
+              </strong>{" "}
+              Developer.
             </motion.h2>
           </Hide>
         </motion.div>
         <SubHeading variants={fade}>
-          I use <span>JavaScript</span> and <span>React</span> to create
-          high-end interactive experiences and products. I'm a firm believer in
-          prioritising user experience, accessibility and responsive design.
+          I use{" "}
+          <strong>
+            <span>JavaScript</span>
+          </strong>{" "}
+          and{" "}
+          <strong>
+            <span>React</span>
+          </strong>{" "}
+          to create high-end interactive experiences and products. I'm a firm
+          believer in prioritising user experience, accessibility and responsive
+          design.
         </SubHeading>
         <Link to="/work">
           <motion.button variants={fade}>Check out my projects</motion.button>
