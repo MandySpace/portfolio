@@ -450,7 +450,7 @@ function OurWork() {
                 </p>
                 <div className="button-container">
                   <a
-                    href="https://flavors-recipe.netlify.app/"
+                    href="https://explore-the-solar-system.netlify.app/"
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -548,7 +548,7 @@ function OurWork() {
                 </p>
                 <div className="button-container">
                   <a
-                    href="https://muse-music-player.netlify.app/"
+                    href="https://flavors-recipe.netlify.app/"
                     target="_blank"
                     rel="noreferrer"
                   >
