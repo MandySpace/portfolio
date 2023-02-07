@@ -584,7 +584,7 @@ const Work = styled(motion.div)`
   }
 
   .container {
-    scroll-snap-type: y mandatory;
+    // scroll-snap-type: y mandatory;
     overflow-y: scroll;
     width: 100%;
     height: 100%;
