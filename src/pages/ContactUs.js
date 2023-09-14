@@ -43,7 +43,7 @@ function ContactUs({ name, email, message, setName, setEmail, setMessage }) {
     e.preventDefault();
     try {
       const response = await fetch(
-        "https://portfolio-contact-1ahssnio0-mandyspace.vercel.app/api/contact",
+        "https://portfolio-contact-neon.vercel.app/api/contact",
         {
           method: "POST",
           body: JSON.stringify({
