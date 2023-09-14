@@ -51,6 +51,9 @@ function ContactUs({ name, email, message, setName, setEmail, setMessage }) {
             email,
             message,
           }),
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
       );
 
