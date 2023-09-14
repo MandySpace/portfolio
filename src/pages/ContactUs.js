@@ -43,13 +43,13 @@ function ContactUs({ name, email, message, setName, setEmail, setMessage }) {
     e.preventDefault();
     try {
       const response = await fetch(
-        "https://contact-form-e0ae9-default-rtdb.firebaseio.com/contact-message.json",
+        "https://portfolio-contact-1ahssnio0-mandyspace.vercel.app/api/contact",
         {
           method: "POST",
           body: JSON.stringify({
-            userName: name,
-            userEmail: email,
-            userMessage: message,
+            name,
+            email,
+            message,
           }),
         }
       );
