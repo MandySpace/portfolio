@@ -6,10 +6,12 @@ import mail from "../img/svg/mail.svg";
 import github from "../img/svg/github.svg";
 import copy_white from "../img/svg/copy_white.svg";
 import linkedin from "../img/svg/linkedin.svg";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import useCursor from "../components/useCursor";
 
 function ContactUs({ name, email, message, setName, setEmail, setMessage }) {
+  const [isLoading, setIsLoading] = useState(false);
+
   const history = useHistory();
 
   const copyToClipRef = useRef(null);
@@ -42,6 +44,7 @@ function ContactUs({ name, email, message, setName, setEmail, setMessage }) {
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     try {
+      setIsLoading(true);
       const response = await fetch(
         "https://portfolio-contact-neon.vercel.app/api/contact",
         {
@@ -74,6 +77,7 @@ function ContactUs({ name, email, message, setName, setEmail, setMessage }) {
       formNotifRef.current.classList.add("show");
       setTimeout(() => formNotifRef.current.classList.remove("show"), 3000);
     }
+    setIsLoading(false);
   };
 
   return (
@@ -152,7 +156,9 @@ function ContactUs({ name, email, message, setName, setEmail, setMessage }) {
                 Form submitted successfully
               </span>
               <a href="dsb">
-                <button className="form-btn">Submit</button>
+                <button className="form-btn" disabled={isLoading}>
+                  {isLoading ? "Sending..." : "Submit"}
+                </button>
               </a>
             </motion.div>
           </form>
