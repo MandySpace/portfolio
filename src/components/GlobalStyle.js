@@ -48,7 +48,6 @@ html{
 
 body {
     font-family: 'Inter', sans-serif;
-    background: radial-gradient( #252525,#161616);
     background-attachment: fixed;
     color: white;
     

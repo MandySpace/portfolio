@@ -61,7 +61,46 @@ experiences and products for the web. Connect with me for further details."
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <title>Amandeep Singh | Frontend Developer</title>
   </head>
+  <style>
+    body {
+      background: radial-gradient(#252525, #161616);
+    }
+    #loader {
+      min-height: 100vh;
+      min-height: 100dvh;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      opacity: 0;
+    }
+
+    #loader > img {
+      width: 100px;
+      animation-name: loadingAnim;
+      animation-duration: 3s;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;
+    }
+
+    @keyframes loadingAnim {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.2);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+  </style>
   <body>
+    <div id="loader">
+      <img src="%PUBLIC_URL%/logo512.png" alt="" />
+    </div>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
   </body>
